@@ -1,0 +1,32 @@
+{
+  "name": "stickman-ai-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-assisted stickman animation studio. Remotion video engine, MVP pipeline.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "build:audio": "tsx scripts/build-audio.ts",
+    "render:episode": "tsx scripts/render-episode.ts",
+    "validate:mp4": "tsx scripts/validate-mp4.ts"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.545",
+    "@remotion/cli": "4.0.545",
+    "@remotion/player": "4.0.545",
+    "@remotion/renderer": "4.0.545",
+    "@remotion/transitions": "4.0.545",
+    "remotion": "4.0.545",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}
