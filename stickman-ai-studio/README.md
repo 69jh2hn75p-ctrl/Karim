@@ -13,6 +13,8 @@ npm run build:audio        # музыка, SFX, озвучка (espeak-ng), та
 npm run typecheck          # проверка типов
 npm test                   # 36 тестов
 npm run check:story        # сценарий валиден, раскадровка выведена, совпадает с таймлайном рендера
+npm run build:audio:ep002  # эпизод 002 «Ash Road»: аудио и тайминг
+npm run render:ep002       # эпизод 002: exports/episode-002.mp4 + SRT + проверка
 npm run render:episode     # рендер exports/episode-001.mp4 + SRT + проверка
 npm run studio             # предпросмотр в Remotion Studio
 ```

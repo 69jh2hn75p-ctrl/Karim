@@ -39,6 +39,8 @@ export interface StickmanProps {
   mouth?: number;
   /** 1 is normal; higher opens the eyes for surprise. */
   eyeOpen?: number;
+  /** Vertical offset from the ground line in world units. Positive is down (falling). */
+  drop?: number;
 }
 
 /** Rig: two-bone legs and arms, torso, head with tilt, face, one accessory. */
@@ -50,6 +52,7 @@ export const Stickman: React.FC<StickmanProps> = ({
   facing = 1,
   mouth = 0,
   eyeOpen = 1,
+  drop = 0,
 }) => {
   const b = pose.bob;
   const hip = { x: HIP.x, y: HIP.y + b };
@@ -75,7 +78,7 @@ export const Stickman: React.FC<StickmanProps> = ({
   const eyeR = 2.3 * eyeOpen;
 
   return (
-    <g transform={`translate(${x} ${GROUND_Y}) scale(${CHAR_SCALE * facing} ${CHAR_SCALE})`}>
+    <g transform={`translate(${x} ${GROUND_Y + drop}) scale(${CHAR_SCALE * facing} ${CHAR_SCALE})`}>
       {/* Far side first, dimmed, so the near side reads in front. */}
       <path d={toPath(legR)} fill="none" stroke={FAR} strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" />
       <path d={toPath(armR)} fill="none" stroke={FAR} strokeWidth={STROKE} strokeLinecap="round" strokeLinejoin="round" />

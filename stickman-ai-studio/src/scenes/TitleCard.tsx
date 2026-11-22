@@ -3,11 +3,15 @@ import { spring } from 'remotion';
 import { TITLE_SPAN } from '../engine/timeline';
 import { smooth } from '../engine/math';
 
-const WORD = 'THE LAB BELOW';
-
-/** Episode title: letters spring into place one by one, then fade out. */
-export const TitleCard: React.FC<{ frame: number; fps: number }> = ({ frame, fps }) => {
-  const { from, to } = TITLE_SPAN;
+/** Episode title: letters spring into place one by one, then fade out. Defaults are Episode 001. */
+export const TitleCard: React.FC<{
+  frame: number;
+  fps: number;
+  span?: { from: number; to: number };
+  kicker?: string;
+  word?: string;
+}> = ({ frame, fps, span = TITLE_SPAN, kicker = 'EPISODE 001', word = 'THE LAB BELOW' }) => {
+  const { from, to } = span;
   const opacity = smooth(frame, from, from + 20) * (1 - smooth(frame, to - 20, to));
   if (opacity <= 0.001) return null;
 
@@ -34,10 +38,10 @@ export const TitleCard: React.FC<{ frame: number; fps: number }> = ({ frame, fps
           fontFamily: 'Inter, "Segoe UI", Arial, sans-serif',
         }}
       >
-        EPISODE 001
+        {kicker}
       </div>
       <div style={{ display: 'flex', gap: 4, marginTop: 8 }}>
-        {[...WORD].map((ch, i) => {
+        {[...word].map((ch, i) => {
           const s = spring({ frame: frame - from - 4 - i * 2, fps, config: { damping: 14, mass: 0.6 } });
           return (
             <span

@@ -6,6 +6,16 @@ import { spawnSync } from 'node:child_process';
 import { existsSync, statSync } from 'node:fs';
 import { FPS, TOTAL_FRAMES, WIDTH, HEIGHT } from '../../src/engine/timeline';
 
+/** What the delivered file must match. Defaults to Episode 001; other episodes pass their own. */
+export interface ExpectedVideo {
+  fps: number;
+  frames: number;
+  width: number;
+  height: number;
+}
+
+export const EPISODE_001_EXPECTED: ExpectedVideo = { fps: FPS, frames: TOTAL_FRAMES, width: WIDTH, height: HEIGHT };
+
 export interface CheckResult {
   name: string;
   status: 'PASS' | 'FAIL' | 'WARN';
@@ -69,7 +79,11 @@ function blackSegments(file: string): { start: number; duration: number }[] {
   return out;
 }
 
-export function validateMp4(file: string, contactSheetPath?: string): QualityReport {
+export function validateMp4(
+  file: string,
+  contactSheetPath?: string,
+  expected: ExpectedVideo = EPISODE_001_EXPECTED,
+): QualityReport {
   const checks: CheckResult[] = [];
   const facts: QualityReport['facts'] = {};
   const add = (name: string, ok: boolean, detail: string, warnOnly = false) =>
@@ -97,17 +111,25 @@ export function validateMp4(file: string, contactSheetPath?: string): QualityRep
     facts.r_frame_rate = v.r_frame_rate ?? null;
     add('video codec is H.264', v.codec_name === 'h264', String(v.codec_name));
     add('pixel format is yuv420p', v.pix_fmt === 'yuv420p', String(v.pix_fmt));
-    add('resolution is 1920x1080', v.width === WIDTH && v.height === HEIGHT, `${v.width}x${v.height}`);
-    add('frame rate is 30 fps', v.r_frame_rate === `${FPS}/1`, String(v.r_frame_rate));
+    add(
+      `resolution is ${expected.width}x${expected.height}`,
+      v.width === expected.width && v.height === expected.height,
+      `${v.width}x${v.height}`,
+    );
+    add(`frame rate is ${expected.fps} fps`, v.r_frame_rate === `${expected.fps}/1`, String(v.r_frame_rate));
   }
 
   const decoded = decodedFrameCount(file);
   facts.decoded_frames = decoded;
-  add(`decoded frame count is ${TOTAL_FRAMES}`, decoded === TOTAL_FRAMES, `${decoded} decoded`);
+  add(`decoded frame count is ${expected.frames}`, decoded === expected.frames, `${decoded} decoded`);
 
-  const expectedDuration = TOTAL_FRAMES / FPS;
+  const expectedDuration = expected.frames / expected.fps;
   const dur = facts.duration_s as number;
-  add('duration matches timeline (24 s)', Math.abs(dur - expectedDuration) < 0.1, `${dur.toFixed(3)} s`);
+  add(
+      `duration matches timeline (${expectedDuration} s)`,
+      Math.abs(dur - expectedDuration) < 0.1,
+      `${dur.toFixed(3)} s`,
+    );
 
   if (a) {
     facts.audio_codec = a.codec_name ?? null;
@@ -144,7 +166,7 @@ export function validateMp4(file: string, contactSheetPath?: string): QualityRep
       '-i',
       file,
       '-vf',
-      "select='not(mod(n\\,60))',scale=480:-1,tile=4x3",
+      `select='not(mod(n\\,${Math.round(expected.frames / 12)}))',scale=480:-1,tile=4x3`,
       '-frames:v',
       '1',
       contactSheetPath,
