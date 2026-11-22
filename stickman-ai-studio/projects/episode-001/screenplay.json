@@ -1,0 +1,174 @@
+{
+  "title": "The Lab Below",
+  "logline": "Two stickmen follow a glowing panel to a door that was not there before, and find a laboratory hidden under the ground.",
+  "synopsis": "Ren and Bo walk into a dark tunnel. A panel on the wall wakes up, and Bo is the first to notice the change. A steel door slides open where no door should be, and the pair steps into a lab that has been waiting underground for years.",
+  "conflict": "Ren wants answers now. Bo wants to turn back. Neither can leave once the door has opened.",
+  "language": "en",
+  "durationSeconds": 24,
+  "fps": 30,
+  "characters": [
+    {
+      "id": "ren",
+      "name": "Ren",
+      "role": "Curious leader",
+      "personality": "Brave and impatient; wants answers. Identity colour: cyan scarf."
+    },
+    {
+      "id": "bo",
+      "name": "Bo",
+      "role": "Careful companion",
+      "personality": "Cautious; notices danger first. Identity colour: orange backpack."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "S01",
+      "title": "Arrival",
+      "location": "Tunnel entrance",
+      "from": 0,
+      "to": 150,
+      "summary": "The pair walks in from the left toward a glowing wall.",
+      "beats": [
+        "Ren and Bo enter from off-screen left",
+        "The camera follows the pair at walking pace",
+        "Ambient music opens"
+      ],
+      "shots": [
+        {
+          "id": "S01-01",
+          "from": 0,
+          "to": 90,
+          "size": "wide",
+          "camera": "Wide, tracking the pair from behind-left",
+          "action": "Ren and Bo walk in from off-screen left; footsteps"
+        },
+        {
+          "id": "S01-02",
+          "from": 90,
+          "to": 150,
+          "size": "medium",
+          "camera": "Slow push-in on the pair",
+          "action": "They stop by the wall; idle breathing"
+        }
+      ],
+      "dialogue": []
+    },
+    {
+      "id": "S02",
+      "title": "The glow",
+      "location": "Tunnel wall with circuit panel",
+      "from": 150,
+      "to": 330,
+      "summary": "Ren spots a panel that lights up as they stand near it.",
+      "beats": [
+        "Ren spots the glowing circuit panel and points at it",
+        "Ren speaks; Bo steps up beside him",
+        "The panel lights up; Bo throws both arms up"
+      ],
+      "shots": [
+        {
+          "id": "S02-01",
+          "from": 150,
+          "to": 240,
+          "size": "medium",
+          "camera": "Medium on Ren, slow push",
+          "action": "Ren points at the panel and speaks"
+        },
+        {
+          "id": "S02-02",
+          "from": 240,
+          "to": 330,
+          "size": "medium",
+          "camera": "Medium on Bo, panel in the background",
+          "action": "Panel is lit; Bo is surprised"
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "L01",
+          "speaker": "ren",
+          "text": "Bo, look at the wall. It is glowing.",
+          "startFrame": 180
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "The door",
+      "location": "Tunnel, steel door",
+      "from": 330,
+      "to": 510,
+      "summary": "Bo doubts what they see. The pair walks to a door and it opens.",
+      "beats": [
+        "Bo speaks, unsure",
+        "The pair walks toward the door",
+        "The door slides open; light spills out"
+      ],
+      "shots": [
+        {
+          "id": "S03-01",
+          "from": 330,
+          "to": 420,
+          "size": "wide",
+          "camera": "Pan from the pair to the steel door",
+          "action": "Bo speaks; the pair walks toward the door"
+        },
+        {
+          "id": "S03-02",
+          "from": 420,
+          "to": 510,
+          "size": "medium",
+          "camera": "Medium on the door, light spilling out",
+          "action": "Door slides open; the pair steps toward the light"
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "L02",
+          "speaker": "bo",
+          "text": "Ren, that door was not there before.",
+          "startFrame": 345
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "The lab",
+      "location": "Underground laboratory",
+      "from": 510,
+      "to": 720,
+      "summary": "The lab lights come on. Ren confirms what they found. The episode title appears.",
+      "beats": [
+        "Lab lights come on in sequence",
+        "Ren confirms the discovery",
+        "Title card: EPISODE 001, THE LAB BELOW"
+      ],
+      "shots": [
+        {
+          "id": "S04-01",
+          "from": 510,
+          "to": 620,
+          "size": "wide",
+          "camera": "Dolly into the lab",
+          "action": "Lab lights come on; Ren walks in"
+        },
+        {
+          "id": "S04-02",
+          "from": 620,
+          "to": 720,
+          "size": "wide",
+          "camera": "Pull back to a wide; title card",
+          "action": "Ren confirms the discovery; episode title appears"
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "L03",
+          "speaker": "ren",
+          "text": "We found it. An underground laboratory, hidden for years.",
+          "startFrame": 560
+        }
+      ]
+    }
+  ]
+}

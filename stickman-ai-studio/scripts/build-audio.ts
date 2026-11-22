@@ -2,20 +2,20 @@
  * Builds every audio asset for Episode 001:
  *   public/audio/music.wav        original procedural music bed
  *   public/sfx/*.wav              footstep, door, ping (procedural)
- *   public/audio/<id>.wav         one TTS file per dialogue line (local espeak-ng)
+ *   public/audio/<id>.wav         one TTS file per dialogue line (TTS_PROVIDER, default espeak-ng)
  *   src/generated/dialogue-timing.json  frame timing + per-frame mouth envelope
  *
  * Run with: npm run build:audio
  */
-import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ROSTER } from '../src/characters/roster';
 import type { DialogueLine, DialogueTiming } from '../src/engine/dialogue';
 import { DIALOGUE, DialogueSpec, FPS, sceneAt, TOTAL_FRAMES } from '../src/engine/timeline';
+import { createTtsProvider, type TtsProvider } from './lib/tts';
 import { SAMPLE_RATE, normalizePeak, renderDoor, renderFootstep, renderMusicBed, renderPing } from './lib/synth';
-import { decodeWav, encodeWav, resampleLinear } from './lib/wav';
+import { encodeWav, resampleLinear } from './lib/wav';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const AUDIO_DIR = path.join(ROOT, 'public/audio');
@@ -24,11 +24,6 @@ const BUILD_DIR = path.join(ROOT, 'build/tts');
 const TIMING_FILE = path.join(ROOT, 'src/generated/dialogue-timing.json');
 
 const round3 = (v: number): number => Math.round(v * 1000) / 1000;
-
-function ttsVersion(): string {
-  const out = execFileSync('espeak-ng', ['--version'], { encoding: 'utf8' });
-  return out.split('\n')[0].trim();
-}
 
 /** Mouth envelope: RMS per video frame, normalised to the line peak, lightly smoothed. */
 export function envelopeFor(samples: Float32Array, sampleRate: number, durationFrames: number): number[] {
@@ -51,14 +46,10 @@ export function envelopeFor(samples: Float32Array, sampleRate: number, durationF
   });
 }
 
-function renderLine(spec: DialogueSpec): DialogueLine {
+async function renderLine(spec: DialogueSpec, tts: TtsProvider): Promise<DialogueLine> {
   const voice = ROSTER[spec.speaker].voice;
-  const rawPath = path.join(BUILD_DIR, `${spec.id}.espeak.wav`);
-  execFileSync('espeak-ng', ['-v', voice.voice, '-s', String(voice.speed), '-p', String(voice.pitch), '-w', rawPath, spec.text], {
-    stdio: 'pipe',
-  });
-  const decoded = decodeWav(readFileSync(rawPath));
-  const speech = normalizePeak(resampleLinear(decoded.samples, decoded.sampleRate, SAMPLE_RATE), 0.85);
+  const result = await tts.synthesize({ text: spec.text, speaker: spec.speaker, voice });
+  const speech = normalizePeak(resampleLinear(result.samples, result.sampleRate, SAMPLE_RATE), 0.85);
 
   const audioFile = `${spec.id}.wav`;
   writeFileSync(path.join(AUDIO_DIR, audioFile), encodeWav(speech, SAMPLE_RATE));
@@ -81,7 +72,7 @@ function renderLine(spec: DialogueSpec): DialogueLine {
   };
 }
 
-function main(): void {
+async function main(): Promise<void> {
   for (const dir of [AUDIO_DIR, SFX_DIR, BUILD_DIR, path.dirname(TIMING_FILE)]) mkdirSync(dir, { recursive: true });
 
   const musicSeconds = TOTAL_FRAMES / FPS + 1;
@@ -90,11 +81,14 @@ function main(): void {
   writeFileSync(path.join(SFX_DIR, 'door.wav'), encodeWav(renderDoor(SAMPLE_RATE), SAMPLE_RATE));
   writeFileSync(path.join(SFX_DIR, 'ping.wav'), encodeWav(renderPing(SAMPLE_RATE), SAMPLE_RATE));
 
-  const lines = DIALOGUE.map(renderLine);
+  const tts = createTtsProvider(process.env, BUILD_DIR);
+  const lines: DialogueLine[] = [];
+  for (const spec of DIALOGUE) lines.push(await renderLine(spec, tts));
+
   const timing: DialogueTiming = {
     fps: FPS,
     sampleRate: SAMPLE_RATE,
-    tts: ttsVersion(),
+    tts: tts.describe(),
     lines,
   };
   writeFileSync(TIMING_FILE, JSON.stringify(timing, null, 2) + '\n');
@@ -106,4 +100,7 @@ function main(): void {
   console.log(`Timing written to ${path.relative(ROOT, TIMING_FILE)} (TTS: ${timing.tts})`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err instanceof Error ? err.message : err);
+  process.exit(1);
+});

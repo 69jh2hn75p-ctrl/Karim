@@ -8,6 +8,7 @@
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
+    "check:story": "tsx scripts/check-story.ts",
     "build:audio": "tsx scripts/build-audio.ts",
     "render:episode": "tsx scripts/render-episode.ts",
     "validate:mp4": "tsx scripts/validate-mp4.ts"
