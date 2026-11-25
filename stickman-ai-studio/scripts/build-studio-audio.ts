@@ -45,12 +45,19 @@ async function main(): Promise<void> {
   const sp = JSON.parse(readFileSync(SCREENPLAY, 'utf8')) as { scenes: Scene[] };
   const env: Record<string, string | undefined> = { ...process.env };
   if (!env.ELEVENLABS_API_KEY) env.ELEVENLABS_API_KEY = 'proxy-injected';
-  const tts = createTtsProvider({ ...env, TTS_PROVIDER: env.TTS_PROVIDER ?? 'elevenlabs' });
+  // espeak-ng is the default so a full rebuild never spends the ElevenLabs quota.
+  // Set TTS_PROVIDER=elevenlabs to use the account voices (needs quota).
+  const tts = createTtsProvider({ ...env, TTS_PROVIDER: env.TTS_PROVIDER ?? 'espeak' });
 
-  const timingLines: unknown[] = [];
-  const problems: string[] = [];
-  let spoken = 0;
-
+  // Pass 1: synthesise every line and measure it.
+  interface Synth {
+    scene: Scene;
+    line: Line;
+    speech: Float32Array;
+    durationFrames: number;
+    audioFile: string;
+  }
+  const synths: Synth[] = [];
   for (const scene of sp.scenes) {
     for (const line of scene.lines) {
       const spec = FAMILY[line.speaker];
@@ -58,24 +65,37 @@ async function main(): Promise<void> {
       const speech = normalizePeak(resampleLinear(result.samples, result.sampleRate, SAMPLE_RATE), 0.85);
       const audioFile = `${line.id}.wav`;
       writeFileSync(path.join(AUDIO_DIR, audioFile), encodeWav(speech, SAMPLE_RATE));
+      synths.push({ scene, line, speech, durationFrames: Math.ceil((speech.length / SAMPLE_RATE) * FPS), audioFile });
+      console.log(`${line.id} ${line.speaker.padEnd(6)} ${(speech.length / SAMPLE_RATE).toFixed(2)}s`);
+    }
+  }
 
-      const durationFrames = Math.ceil((speech.length / SAMPLE_RATE) * FPS);
-      const startFrame = Math.round(line.start * FPS);
-      const sceneEnd = scene.to * FPS;
-      if (startFrame + durationFrames > sceneEnd) {
-        problems.push(`${line.id} runs ${(startFrame + durationFrames - sceneEnd) / FPS} s past ${scene.id}`);
-      }
+  // Pass 2: lay the lines out. Each line starts at its authored time, or after the previous
+  // line in the same scene plus a short breath, whichever is later. Nothing overlaps.
+  const GAP = 0.2;
+  const problems: string[] = [];
+  const timingLines: unknown[] = [];
+  let spoken = 0;
+  for (const scene of sp.scenes) {
+    const inScene = synths.filter((x) => x.scene.id === scene.id).sort((a, b) => a.line.start - b.line.start);
+    let cursor = scene.from;
+    for (const x of inScene) {
+      const start = Math.max(x.line.start, cursor);
+      const startFrame = Math.round(start * FPS);
+      const endSec = startFrame / FPS + x.durationFrames / FPS;
+      if (endSec > scene.to) problems.push(`${x.line.id} ends ${(endSec - scene.to).toFixed(2)} s past ${scene.id}`);
+      if (start > x.line.start + 0.01) console.log(`  moved ${x.line.id} from ${x.line.start} to ${start.toFixed(2)} to avoid overlap`);
+      cursor = endSec + GAP;
+      spoken += x.line.text.trim().split(/\s+/).length;
       timingLines.push({
-        id: line.id,
-        speaker: line.speaker,
-        text: line.text,
+        id: x.line.id,
+        speaker: x.line.speaker,
+        text: x.line.text,
         startFrame,
-        durationFrames,
-        audioFile,
-        envelope: envelopeFor(speech, SAMPLE_RATE, durationFrames, FPS),
+        durationFrames: x.durationFrames,
+        audioFile: x.audioFile,
+        envelope: envelopeFor(x.speech, SAMPLE_RATE, x.durationFrames, FPS),
       });
-      spoken += line.text.trim().split(/\s+/).length;
-      console.log(`${line.id} ${line.speaker.padEnd(6)} ${(durationFrames / FPS).toFixed(2)}s  "${line.text}"`);
     }
   }
 
@@ -83,7 +103,7 @@ async function main(): Promise<void> {
   writeFileSync(TIMING, JSON.stringify(timing, null, 2) + '\n');
   console.log(`\nWrote ${timingLines.length} lines, ${spoken} spoken words. TTS: ${timing.tts}`);
   if (problems.length) {
-    console.log('Lines that overrun their scene (shorten the text or move the cue):');
+    console.log('Lines that run past their scene (shorten the text or give the scene more time):');
     for (const p of problems) console.log(`  - ${p}`);
   }
 }

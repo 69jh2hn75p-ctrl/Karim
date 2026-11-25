@@ -7,153 +7,832 @@
   "height": 1080,
   "durationSeconds": 390,
   "characters": {
-    "ben": { "name": "Ben", "role": "Narrator, 20. Funny, sarcastic, breaks the fourth wall." },
-    "frank": { "name": "Frank", "role": "Dad. Loves decorations, terrible at assembling anything, confident anyway." },
-    "diane": { "name": "Diane", "role": "Mom. Organizes everything, takes Christmas dinner very seriously." },
-    "max": { "name": "Max", "role": "Little brother. Energetic, mischievous, hunts for presents." }
+    "ben": {
+      "name": "Ben",
+      "role": "Narrator, 20. Funny, sarcastic, breaks the fourth wall."
+    },
+    "frank": {
+      "name": "Frank",
+      "role": "Dad. Loves decorations, terrible at assembling anything, confident anyway."
+    },
+    "diane": {
+      "name": "Diane",
+      "role": "Mom. Organizes everything, takes Christmas dinner very seriously."
+    },
+    "max": {
+      "name": "Max",
+      "role": "Little brother. Energetic, mischievous, hunts for presents."
+    }
   },
   "scenes": [
     {
-      "id": "S01", "title": "The Hook", "from": 0, "to": 30,
-      "location": "Living room, tree toppling", "camera": "Close on the tree, whip to Frank, then a slow push on Ben",
-      "beats": ["The tree tips and Frank lunges to catch it", "Max screams", "Ben looks straight into the camera", "The tree goes down"],
+      "id": "S01",
+      "title": "The Hook",
+      "from": 0,
+      "to": 30,
+      "location": "Living room, tree toppling",
+      "camera": "Close on the tree, whip to Frank, then a slow push on Ben",
+      "beats": [
+        "The tree tips and Frank lunges to catch it",
+        "Max screams",
+        "Ben looks straight into the camera",
+        "The tree goes down"
+      ],
       "lines": [
-        { "id": "S01-01", "speaker": "frank", "start": 0.9, "text": "Got it! I've got it!" },
-        { "id": "S01-02", "speaker": "max", "start": 2.0, "text": "It's falling! It's falling!" },
-        { "id": "S01-03", "speaker": "ben", "start": 4.0, "vo": true, "text": "Every family has its own Christmas traditions." },
-        { "id": "S01-04", "speaker": "ben", "start": 7.2, "vo": true, "text": "Some families have peaceful Christmas mornings." },
-        { "id": "S01-05", "speaker": "ben", "start": 11.0, "vo": true, "text": "My family? Well... we have this." },
-        { "id": "S01-06", "speaker": "diane", "start": 15.0, "offscreen": true, "text": "Frank, that tree is not going to hold itself!" },
-        { "id": "S01-07", "speaker": "frank", "start": 18.2, "text": "It's holding, Diane. It's totally holding." },
-        { "id": "S01-08", "speaker": "ben", "start": 25.0, "text": "Merry Christmas. Please don't sue us." }
+        {
+          "id": "S01-01",
+          "speaker": "frank",
+          "start": 0.9,
+          "text": "Got it! I've got it!"
+        },
+        {
+          "id": "S01-02",
+          "speaker": "max",
+          "start": 2.4,
+          "text": "It's falling! It's falling!"
+        },
+        {
+          "id": "S01-03",
+          "speaker": "ben",
+          "start": 4.4,
+          "vo": true,
+          "text": "Every family has its own Christmas traditions."
+        },
+        {
+          "id": "S01-04",
+          "speaker": "ben",
+          "start": 7.2,
+          "vo": true,
+          "text": "Some families have peaceful Christmas mornings."
+        },
+        {
+          "id": "S01-05",
+          "speaker": "ben",
+          "start": 11.0,
+          "vo": true,
+          "text": "My family? Well... we have this."
+        },
+        {
+          "id": "S01-06",
+          "speaker": "diane",
+          "start": 15.0,
+          "offscreen": true,
+          "text": "Frank, that tree is not going to hold itself!"
+        },
+        {
+          "id": "S01-07",
+          "speaker": "frank",
+          "start": 18.8,
+          "text": "It's holding, Diane. It's totally holding."
+        },
+        {
+          "id": "S01-09",
+          "speaker": "ben",
+          "start": 21.6,
+          "text": "Dad wasn't holding it. Dad was hugging it.",
+          "vo": true
+        },
+        {
+          "id": "S01-08",
+          "speaker": "ben",
+          "start": 25.0,
+          "text": "Merry Christmas. Please don't sue us."
+        }
       ]
     },
     {
-      "id": "S02", "title": "Christmas Preparations", "from": 30, "to": 75,
-      "location": "Living room, decorations everywhere", "camera": "Medium two-shot, then over-the-shoulder on Ben",
-      "beats": ["Ben introduces the family", "Shopping bags and lights", "Max begs for a present"],
+      "id": "S02",
+      "title": "Christmas Preparations",
+      "from": 30,
+      "to": 75,
+      "location": "Living room, decorations everywhere",
+      "camera": "Medium two-shot, then over-the-shoulder on Ben",
+      "beats": [
+        "Ben introduces the family",
+        "Shopping bags and lights",
+        "Max begs for a present",
+        "Ben lists the three house rules"
+      ],
       "lines": [
-        { "id": "S02-01", "speaker": "ben", "start": 31.0, "vo": true, "text": "I'm Ben. I'm twenty years old, I still believe in Christmas, and I still can't touch the lights." },
-        { "id": "S02-02", "speaker": "diane", "start": 38.5, "text": "Ben, those shopping bags are not decorations." },
-        { "id": "S02-03", "speaker": "frank", "start": 41.0, "text": "Everything is a decoration if you believe hard enough." },
-        { "id": "S02-04", "speaker": "max", "start": 44.0, "text": "Can I open one?" },
-        { "id": "S02-05", "speaker": "diane", "start": 46.0, "text": "No." },
-        { "id": "S02-06", "speaker": "ben", "start": 49.0, "vo": true, "text": "Here's how it works. Mom plans everything. Dad says he's in charge. Max is in charge of trouble. And I'm in charge of telling you about it." },
-        { "id": "S02-07", "speaker": "frank", "start": 61.0, "text": "Okay. Who wants hot chocolate?" },
-        { "id": "S02-08", "speaker": "max", "start": 63.0, "text": "Me! Me! Me!" }
+        {
+          "id": "S02-01",
+          "speaker": "ben",
+          "start": 31.0,
+          "vo": true,
+          "text": "I'm Ben. I'm twenty years old, I still believe in Christmas, and I still can't touch the lights."
+        },
+        {
+          "id": "S02-02",
+          "speaker": "diane",
+          "start": 38.8,
+          "text": "Ben, those shopping bags are not decorations."
+        },
+        {
+          "id": "S02-03",
+          "speaker": "frank",
+          "start": 42.0,
+          "text": "Everything is a decoration if you believe hard enough."
+        },
+        {
+          "id": "S02-04",
+          "speaker": "max",
+          "start": 46.0,
+          "text": "Can I open one?"
+        },
+        {
+          "id": "S02-05",
+          "speaker": "diane",
+          "start": 48.0,
+          "text": "No."
+        },
+        {
+          "id": "S02-06",
+          "speaker": "ben",
+          "start": 50.0,
+          "vo": true,
+          "text": "Here's how it works. Mom plans everything. Dad says he's in charge. Max is in charge of trouble. And I'm in charge of telling you about it, so pay attention."
+        },
+        {
+          "id": "S02-07",
+          "speaker": "frank",
+          "start": 61.5,
+          "text": "Okay. Who wants hot chocolate?"
+        },
+        {
+          "id": "S02-08",
+          "speaker": "max",
+          "start": 64.0,
+          "text": "Me! Me! Me!"
+        },
+        {
+          "id": "S02-09",
+          "speaker": "ben",
+          "start": 65.5,
+          "vo": true,
+          "text": "Three rules. Nobody touches the lights. Nobody opens a present early. Dad stays off the ladder."
+        },
+        {
+          "id": "S02-10",
+          "speaker": "frank",
+          "start": 72.6,
+          "text": "That was one time!"
+        }
       ]
     },
     {
-      "id": "S03", "title": "The Christmas Tree Disaster", "from": 75, "to": 120,
-      "location": "Living room, tree stand", "camera": "Wide, then quick cuts to each fall, handheld energy",
-      "beats": ["Frank assembles the stand upside down", "The tree falls again and again", "Max sneaks ornaments", "Ben tangles himself in tinsel"],
+      "id": "S03",
+      "title": "The Christmas Tree Disaster",
+      "from": 75,
+      "to": 120,
+      "location": "Living room, tree stand",
+      "camera": "Wide, then quick cuts to each fall, handheld energy",
+      "beats": [
+        "Frank assembles the stand upside down",
+        "The tree falls again and again",
+        "Max sneaks ornaments",
+        "Ben tangles himself in tinsel"
+      ],
       "lines": [
-        { "id": "S03-01", "speaker": "frank", "start": 76.0, "text": "Step one: the stand. Step two: the tree. Step three: victory." },
-        { "id": "S03-02", "speaker": "ben", "start": 82.0, "text": "Dad, the stand is upside down." },
-        { "id": "S03-03", "speaker": "frank", "start": 85.0, "text": "It's a modern design, Ben." },
-        { "id": "S03-04", "speaker": "ben", "start": 88.0, "vo": true, "text": "Dad has never once read the instructions. He says instructions are for people who are scared of their own decorations." },
-        { "id": "S03-05", "speaker": "max", "start": 97.0, "text": "Shhh. I'm a ninja." },
-        { "id": "S03-06", "speaker": "frank", "start": 100.0, "text": "Max. Put the star down." },
-        { "id": "S03-07", "speaker": "ben", "start": 104.0, "text": "I'll help!" },
-        { "id": "S03-08", "speaker": "diane", "start": 108.0, "offscreen": true, "text": "BEN!" }
+        {
+          "id": "S03-01",
+          "speaker": "frank",
+          "start": 76.0,
+          "text": "Step one: the stand. Step two: the tree. Step three: victory."
+        },
+        {
+          "id": "S03-02",
+          "speaker": "ben",
+          "start": 82.0,
+          "text": "Dad, the stand is upside down."
+        },
+        {
+          "id": "S03-03",
+          "speaker": "frank",
+          "start": 85.0,
+          "text": "It's a modern design, Ben."
+        },
+        {
+          "id": "S03-04",
+          "speaker": "ben",
+          "start": 88.0,
+          "vo": true,
+          "text": "Dad has never once read the instructions. He says instructions are for people who are scared of their own decorations."
+        },
+        {
+          "id": "S03-12",
+          "speaker": "frank",
+          "start": 94.9,
+          "text": "Instructions are suggestions."
+        },
+        {
+          "id": "S03-05",
+          "speaker": "max",
+          "start": 97.0,
+          "text": "Shhh. I'm a ninja."
+        },
+        {
+          "id": "S03-06",
+          "speaker": "frank",
+          "start": 100.0,
+          "text": "Max. Put the star down."
+        },
+        {
+          "id": "S03-07",
+          "speaker": "ben",
+          "start": 103.0,
+          "text": "I'll help!"
+        },
+        {
+          "id": "S03-08",
+          "speaker": "diane",
+          "start": 105.0,
+          "offscreen": true,
+          "text": "BEN!"
+        },
+        {
+          "id": "S03-09",
+          "speaker": "ben",
+          "start": 107.5,
+          "vo": true,
+          "text": "Eventually the tree goes up. Eventually it's also on the floor. Usually twice."
+        },
+        {
+          "id": "S03-10",
+          "speaker": "frank",
+          "start": 113.5,
+          "text": "Second time's a charm."
+        },
+        {
+          "id": "S03-11",
+          "speaker": "max",
+          "start": 116.5,
+          "text": "I'm still a ninja."
+        }
       ]
     },
     {
-      "id": "S04", "title": "Christmas Cooking", "from": 120, "to": 165,
-      "location": "Kitchen, dinner in progress", "camera": "Pan across the counter, reaction close-ups on Frank",
-      "beats": ["Diane runs the kitchen", "Frank offers to help with the gravy", "Steam rises, a pan rattles", "Max eyes the cookie jar"],
+      "id": "S04",
+      "title": "Christmas Cooking",
+      "from": 120,
+      "to": 165,
+      "location": "Kitchen, dinner in progress",
+      "camera": "Pan across the counter, reaction close-ups on Frank",
+      "beats": [
+        "Diane runs the kitchen",
+        "Frank offers to help with the gravy",
+        "Steam rises, a pan rattles",
+        "Max eyes the cookie jar"
+      ],
       "lines": [
-        { "id": "S04-01", "speaker": "diane", "start": 121.0, "text": "Ham goes in at four. Potatoes at four fifteen. Nobody touches the gravy." },
-        { "id": "S04-02", "speaker": "frank", "start": 127.0, "text": "I'll help with the gravy." },
-        { "id": "S04-03", "speaker": "diane", "start": 130.0, "text": "Frank." },
-        { "id": "S04-04", "speaker": "frank", "start": 132.0, "text": "Yes, dear." },
-        { "id": "S04-05", "speaker": "max", "start": 135.0, "text": "Mom, can I have a cookie?" },
-        { "id": "S04-06", "speaker": "diane", "start": 137.0, "text": "After dinner." },
-        { "id": "S04-07", "speaker": "ben", "start": 140.0, "vo": true, "text": "Mom runs the kitchen like an air traffic controller. Dad thinks he's a chef. Max thinks every cookie is already his." }
+        {
+          "id": "S04-01",
+          "speaker": "diane",
+          "start": 121.0,
+          "text": "Ham goes in at four. Potatoes at four fifteen. Nobody touches the gravy, and nobody says the word microwave."
+        },
+        {
+          "id": "S04-02",
+          "speaker": "frank",
+          "start": 127.8,
+          "text": "I'll help with the gravy."
+        },
+        {
+          "id": "S04-03",
+          "speaker": "diane",
+          "start": 130.3,
+          "text": "Frank."
+        },
+        {
+          "id": "S04-04",
+          "speaker": "frank",
+          "start": 131.4,
+          "text": "Yes, dear."
+        },
+        {
+          "id": "S04-05",
+          "speaker": "max",
+          "start": 133.0,
+          "text": "Mom, can I have a cookie?"
+        },
+        {
+          "id": "S04-06",
+          "speaker": "diane",
+          "start": 136.0,
+          "text": "After dinner."
+        },
+        {
+          "id": "S04-07",
+          "speaker": "ben",
+          "start": 138.0,
+          "vo": true,
+          "text": "Mom runs the kitchen like an air traffic controller. Dad thinks he's a chef. Max thinks every cookie is already his."
+        },
+        {
+          "id": "S04-08",
+          "speaker": "diane",
+          "start": 147.0,
+          "text": "Ben, taste the potatoes."
+        },
+        {
+          "id": "S04-09",
+          "speaker": "ben",
+          "start": 150.0,
+          "text": "They're perfect."
+        },
+        {
+          "id": "S04-10",
+          "speaker": "diane",
+          "start": 152.0,
+          "text": "They're cold. You tasted the cold one."
+        },
+        {
+          "id": "S04-11",
+          "speaker": "frank",
+          "start": 156.0,
+          "text": "Diane, I think the gravy is... alive."
+        },
+        {
+          "id": "S04-12",
+          "speaker": "max",
+          "start": 161.0,
+          "text": "Can I lick the spoon?"
+        },
+        {
+          "id": "S04-13",
+          "speaker": "diane",
+          "start": 163.0,
+          "text": "No, Max."
+        }
       ]
     },
     {
-      "id": "S05", "title": "Cookie Chaos", "from": 165, "to": 205,
-      "location": "Kitchen table, flour and icing", "camera": "Close-ups on hands and faces, a flour burst, quick reaction cuts",
-      "beats": ["Colorful icing and sprinkles", "Flour explodes over Frank", "Ben's cookie looks sad", "Max keeps his cookie"],
+      "id": "S05",
+      "title": "Cookie Chaos",
+      "from": 165,
+      "to": 205,
+      "location": "Kitchen table, flour and icing",
+      "camera": "Close-ups on hands and faces, a flour burst, quick reaction cuts",
+      "beats": [
+        "Colorful icing and sprinkles",
+        "Flour explodes over Frank",
+        "Ben's cookie looks sad",
+        "Max keeps his cookie"
+      ],
       "lines": [
-        { "id": "S05-01", "speaker": "ben", "start": 166.0, "vo": true, "text": "Cookie time. The one part of Christmas where being messy is the goal." },
-        { "id": "S05-02", "speaker": "max", "start": 171.0, "text": "Sprinkles! Sprinkles! Sprinkles!" },
-        { "id": "S05-03", "speaker": "frank", "start": 175.0, "text": "Careful with the icing, buddy." },
-        { "id": "S05-04", "speaker": "diane", "start": 180.0, "offscreen": true, "text": "FRANK!" },
-        { "id": "S05-05", "speaker": "ben", "start": 184.0, "vo": true, "text": "Mom's cookies look like snowflakes. Dad's look like a crime scene. Mine look like the snowflakes' sad cousin." },
-        { "id": "S05-06", "speaker": "max", "start": 195.0, "text": "I like mine." }
+        {
+          "id": "S05-01",
+          "speaker": "ben",
+          "start": 166.0,
+          "vo": true,
+          "text": "Cookie time. The one part of Christmas where being messy is the goal."
+        },
+        {
+          "id": "S05-02",
+          "speaker": "max",
+          "start": 172.0,
+          "text": "Sprinkles! Sprinkles! Sprinkles!"
+        },
+        {
+          "id": "S05-03",
+          "speaker": "frank",
+          "start": 175.8,
+          "text": "Careful with the icing, buddy."
+        },
+        {
+          "id": "S05-04",
+          "speaker": "diane",
+          "start": 179.0,
+          "offscreen": true,
+          "text": "FRANK!"
+        },
+        {
+          "id": "S05-05",
+          "speaker": "ben",
+          "start": 181.0,
+          "vo": true,
+          "text": "Mom's cookies look like snowflakes. Dad's look like a crime scene. Mine look like the snowflakes' sad cousin."
+        },
+        {
+          "id": "S05-06",
+          "speaker": "max",
+          "start": 189.0,
+          "text": "Mine's a reindeer!"
+        },
+        {
+          "id": "S05-07",
+          "speaker": "ben",
+          "start": 192.0,
+          "vo": true,
+          "text": "It has no legs. It's a reindeer, apparently."
+        },
+        {
+          "id": "S05-08",
+          "speaker": "max",
+          "start": 197.0,
+          "text": "I like mine."
+        },
+        {
+          "id": "S05-09",
+          "speaker": "ben",
+          "start": 200.0,
+          "vo": true,
+          "text": "Nobody talks about the flour."
+        },
+        {
+          "id": "S05-10",
+          "speaker": "max",
+          "start": 202.3,
+          "text": "Still a reindeer!"
+        }
       ]
     },
     {
-      "id": "S06", "title": "Movie Night", "from": 205, "to": 245,
-      "location": "Couch by the fireplace", "camera": "Slow cozy push toward the fire, soft focus on the couch",
-      "beats": ["The family settles in", "Ben falls asleep", "Frank gets emotional and pretends he does not", "Max keeps asking questions"],
+      "id": "S06",
+      "title": "Movie Night",
+      "from": 205,
+      "to": 245,
+      "location": "Couch by the fireplace",
+      "camera": "Slow cozy push toward the fire, soft focus on the couch",
+      "beats": [
+        "The family settles in",
+        "Ben falls asleep",
+        "Frank gets emotional and pretends he does not",
+        "Max keeps asking questions"
+      ],
       "lines": [
-        { "id": "S06-01", "speaker": "diane", "start": 207.0, "text": "Everybody on the couch. Now." },
-        { "id": "S06-02", "speaker": "max", "start": 211.0, "text": "Is this the one where the dog gets lost?" },
-        { "id": "S06-03", "speaker": "frank", "start": 214.0, "text": "No, this is the one where the train comes back." },
-        { "id": "S06-04", "speaker": "ben", "start": 222.0, "vo": true, "text": "I'm just resting my eyes." },
-        { "id": "S06-05", "speaker": "frank", "start": 230.0, "text": "Something's in my eye." },
-        { "id": "S06-06", "speaker": "max", "start": 233.0, "text": "Dad, are you crying?" },
-        { "id": "S06-07", "speaker": "frank", "start": 236.0, "text": "It's the fireplace." },
-        { "id": "S06-08", "speaker": "ben", "start": 240.0, "vo": true, "text": "The fireplace is not in his eye, Dad." }
+        {
+          "id": "S06-01",
+          "speaker": "diane",
+          "start": 207.0,
+          "text": "Everybody on the couch. Now."
+        },
+        {
+          "id": "S06-02",
+          "speaker": "max",
+          "start": 210.0,
+          "text": "Is this the one where the dog gets lost?"
+        },
+        {
+          "id": "S06-03",
+          "speaker": "frank",
+          "start": 214.0,
+          "text": "No, this is the one where the train comes back."
+        },
+        {
+          "id": "S06-11",
+          "speaker": "max",
+          "start": 217.5,
+          "text": "Wait, what train?"
+        },
+        {
+          "id": "S06-04",
+          "speaker": "ben",
+          "start": 220.0,
+          "vo": true,
+          "text": "I'm just resting my eyes."
+        },
+        {
+          "id": "S06-12",
+          "speaker": "frank",
+          "start": 223.0,
+          "text": "Ben, you're snoring."
+        },
+        {
+          "id": "S06-05",
+          "speaker": "frank",
+          "start": 226.0,
+          "text": "Something's in my eye."
+        },
+        {
+          "id": "S06-06",
+          "speaker": "max",
+          "start": 229.0,
+          "text": "Dad, are you crying?"
+        },
+        {
+          "id": "S06-07",
+          "speaker": "frank",
+          "start": 231.5,
+          "text": "It's the fireplace."
+        },
+        {
+          "id": "S06-08",
+          "speaker": "diane",
+          "start": 234.0,
+          "text": "Frank, put the tissue away."
+        },
+        {
+          "id": "S06-09",
+          "speaker": "frank",
+          "start": 237.0,
+          "text": "I'm not crying. I'm allergic to Christmas."
+        },
+        {
+          "id": "S06-10",
+          "speaker": "ben",
+          "start": 241.0,
+          "vo": true,
+          "text": "The fireplace is not in his eye, Dad."
+        }
       ]
     },
     {
-      "id": "S07", "title": "The Secret Present", "from": 245, "to": 290,
-      "location": "Hallway and living room", "camera": "Dynamic tracking shot following Max, whip pans, a slide across the rug",
-      "beats": ["Max finds a box with his name", "He shakes it", "Chase down the hall", "The family catches him"],
+      "id": "S07",
+      "title": "The Secret Present",
+      "from": 245,
+      "to": 290,
+      "location": "Hallway and living room",
+      "camera": "Dynamic tracking shot following Max, whip pans, a slide across the rug",
+      "beats": [
+        "Max finds a box with his name",
+        "He shakes it",
+        "Chase down the hall",
+        "The family catches him"
+      ],
       "lines": [
-        { "id": "S07-01", "speaker": "max", "start": 248.0, "text": "It's just one peek. One tiny peek." },
-        { "id": "S07-02", "speaker": "ben", "start": 252.0, "text": "Max! Put it down!" },
-        { "id": "S07-03", "speaker": "frank", "start": 255.0, "text": "Max, don't you dare." },
-        { "id": "S07-04", "speaker": "max", "start": 259.0, "text": "I'm not! I'm just shaking it!" },
-        { "id": "S07-05", "speaker": "ben", "start": 266.0, "vo": true, "text": "He's been shaking that box since Thanksgiving. It's a sweater. It is always a sweater." },
-        { "id": "S07-06", "speaker": "diane", "start": 276.0, "text": "MAX!" },
-        { "id": "S07-07", "speaker": "max", "start": 281.0, "text": "Okay, okay, okay!" }
+        {
+          "id": "S07-01",
+          "speaker": "max",
+          "start": 248.0,
+          "text": "It's just one peek. One tiny peek."
+        },
+        {
+          "id": "S07-02",
+          "speaker": "ben",
+          "start": 252.0,
+          "text": "Max! Put it down!"
+        },
+        {
+          "id": "S07-03",
+          "speaker": "frank",
+          "start": 255.0,
+          "text": "Max, don't you dare."
+        },
+        {
+          "id": "S07-04",
+          "speaker": "max",
+          "start": 259.0,
+          "text": "I'm not! I'm just shaking it!"
+        },
+        {
+          "id": "S07-05",
+          "speaker": "ben",
+          "start": 262.0,
+          "vo": true,
+          "text": "The rule is simple. If your name is on it, it's yours. Max has never once read the rules."
+        },
+        {
+          "id": "S07-10",
+          "speaker": "frank",
+          "start": 268.8,
+          "text": "Max, what did I say?"
+        },
+        {
+          "id": "S07-06",
+          "speaker": "diane",
+          "start": 272.0,
+          "text": "MAX!"
+        },
+        {
+          "id": "S07-07",
+          "speaker": "max",
+          "start": 275.0,
+          "text": "Okay, okay, okay!"
+        },
+        {
+          "id": "S07-08",
+          "speaker": "ben",
+          "start": 279.0,
+          "vo": true,
+          "text": "He's been shaking that box since Thanksgiving. It's a sweater. It is always a sweater."
+        },
+        {
+          "id": "S07-09",
+          "speaker": "frank",
+          "start": 286.0,
+          "text": "Max, come out from under the tree."
+        }
       ]
     },
     {
-      "id": "S08", "title": "Christmas Morning", "from": 290, "to": 340,
-      "location": "Living room, morning light through the window", "camera": "Warm wide, then close-ups on each reaction",
-      "beats": ["The family wakes up", "Max opens a present", "Diane gives Ben a hand-knit scarf", "Ben is genuinely moved"],
+      "id": "S08",
+      "title": "Christmas Morning",
+      "from": 290,
+      "to": 340,
+      "location": "Living room, morning light through the window",
+      "camera": "Warm wide, then close-ups on each reaction",
+      "beats": [
+        "The family wakes up",
+        "Max opens a present",
+        "Diane gives Ben a hand-knit scarf",
+        "Ben is genuinely moved"
+      ],
       "lines": [
-        { "id": "S08-01", "speaker": "max", "start": 292.0, "text": "It's morning! It's morning!" },
-        { "id": "S08-02", "speaker": "frank", "start": 296.0, "text": "Coffee first." },
-        { "id": "S08-03", "speaker": "diane", "start": 299.0, "text": "Presents first." },
-        { "id": "S08-04", "speaker": "ben", "start": 302.0, "vo": true, "text": "Every year we say the same thing. Every year it still feels like magic." },
-        { "id": "S08-05", "speaker": "max", "start": 312.0, "text": "A dinosaur! A real dinosaur!" },
-        { "id": "S08-06", "speaker": "frank", "start": 316.0, "text": "That's a dinosaur sock, Max." },
-        { "id": "S08-07", "speaker": "diane", "start": 322.0, "text": "Ben. This is for you." },
-        { "id": "S08-08", "speaker": "ben", "start": 326.0, "text": "Mom, you made this?" },
-        { "id": "S08-09", "speaker": "diane", "start": 330.0, "text": "Don't make me say it twice." },
-        { "id": "S08-10", "speaker": "ben", "start": 332.0, "text": "Thanks, Mom. It's perfect." }
+        {
+          "id": "S08-01",
+          "speaker": "max",
+          "start": 292.0,
+          "text": "It's morning! It's morning!"
+        },
+        {
+          "id": "S08-02",
+          "speaker": "frank",
+          "start": 295.5,
+          "text": "Coffee first."
+        },
+        {
+          "id": "S08-03",
+          "speaker": "diane",
+          "start": 297.8,
+          "text": "Presents first."
+        },
+        {
+          "id": "S08-04",
+          "speaker": "ben",
+          "start": 300.5,
+          "vo": true,
+          "text": "Every year we say the same thing. Every year it still feels like magic."
+        },
+        {
+          "id": "S08-05",
+          "speaker": "max",
+          "start": 307.0,
+          "text": "A dinosaur! A real dinosaur!"
+        },
+        {
+          "id": "S08-06",
+          "speaker": "frank",
+          "start": 310.0,
+          "text": "That's a dinosaur sock, Max."
+        },
+        {
+          "id": "S08-07",
+          "speaker": "diane",
+          "start": 314.0,
+          "text": "Ben. This is for you."
+        },
+        {
+          "id": "S08-08",
+          "speaker": "ben",
+          "start": 317.0,
+          "text": "Mom, you made this?"
+        },
+        {
+          "id": "S08-09",
+          "speaker": "diane",
+          "start": 319.5,
+          "text": "Don't make me say it twice."
+        },
+        {
+          "id": "S08-10",
+          "speaker": "ben",
+          "start": 322.5,
+          "vo": true,
+          "text": "The scarf is blue. The scarf is a little ugly. Seriously, it's the best thing I own."
+        },
+        {
+          "id": "S08-11",
+          "speaker": "ben",
+          "start": 329.5,
+          "text": "Thanks, Mom. It's perfect."
+        },
+        {
+          "id": "S08-14",
+          "speaker": "max",
+          "start": 331.8,
+          "text": "Dinosaur now?"
+        },
+        {
+          "id": "S08-12",
+          "speaker": "frank",
+          "start": 334.0,
+          "text": "Ben, Mom made that. Show some respect."
+        },
+        {
+          "id": "S08-13",
+          "speaker": "ben",
+          "start": 337.2,
+          "text": "I respect it, Dad."
+        }
       ]
     },
     {
-      "id": "S09", "title": "The Heartwarming Moment", "from": 340, "to": 375,
-      "location": "Dining table, warm candlelight", "camera": "Slow push-in on the table, gentle orbit to Ben, soft focus on the candles",
-      "beats": ["Everyone sits down together", "Ben looks at the people, not the decorations", "Max and Frank share a laugh"],
+      "id": "S09",
+      "title": "The Heartwarming Moment",
+      "from": 340,
+      "to": 375,
+      "location": "Dining table, warm candlelight",
+      "camera": "Slow push-in on the table, gentle orbit to Ben, soft focus on the candles",
+      "beats": [
+        "Everyone sits down together",
+        "Frank makes a toast",
+        "Ben looks at the people, not the decorations",
+        "Max and the tree joke"
+      ],
       "lines": [
-        { "id": "S09-01", "speaker": "diane", "start": 342.0, "text": "Everybody sit. Just one minute." },
-        { "id": "S09-02", "speaker": "frank", "start": 345.0, "text": "Diane, the ham is getting cold." },
-        { "id": "S09-03", "speaker": "ben", "start": 348.0, "vo": true, "text": "I used to think Christmas was about the tree and the lights and the presents." },
-        { "id": "S09-04", "speaker": "ben", "start": 355.0, "vo": true, "text": "But when I look around this table, I see what matters. It's the people who keep showing up. Even when the tree falls on them." },
-        { "id": "S09-05", "speaker": "max", "start": 364.0, "text": "The tree falls on Dad every year." },
-        { "id": "S09-06", "speaker": "frank", "start": 368.0, "text": "Once. It falls on me once." }
+        {
+          "id": "S09-01",
+          "speaker": "diane",
+          "start": 342.0,
+          "text": "Everybody sit. Just one minute."
+        },
+        {
+          "id": "S09-02",
+          "speaker": "frank",
+          "start": 345.0,
+          "text": "Diane, the ham is getting cold."
+        },
+        {
+          "id": "S09-03",
+          "speaker": "frank",
+          "start": 348.5,
+          "text": "To Diane, who keeps us from burning the house down. And to the tree, which is still standing."
+        },
+        {
+          "id": "S09-07",
+          "speaker": "frank",
+          "start": 352.8,
+          "text": "Hey, I cooked too, you know."
+        },
+        {
+          "id": "S09-04",
+          "speaker": "ben",
+          "start": 356.3,
+          "vo": true,
+          "text": "I used to think Christmas was about the tree and the lights and the presents."
+        },
+        {
+          "id": "S09-08",
+          "speaker": "max",
+          "start": 360.6,
+          "text": "Dad, you're doing the voice again."
+        },
+        {
+          "id": "S09-05",
+          "speaker": "ben",
+          "start": 362.6,
+          "vo": true,
+          "text": "But when I look around this table, I see what matters. It's the people who keep showing up, even when they're covered in flour."
+        },
+        {
+          "id": "S09-06",
+          "speaker": "max",
+          "start": 369.8,
+          "text": "The tree falls on Dad every year."
+        }
       ]
     },
     {
-      "id": "S10", "title": "The Ending", "from": 375, "to": 390,
-      "location": "Living room, tree wobbling again", "camera": "Freeze on the family, then a final wide and a card",
-      "beats": ["The tree starts to tip again", "Everyone freezes", "Ben looks at the camera", "The tree falls, end card"],
+      "id": "S10",
+      "title": "The Ending",
+      "from": 375,
+      "to": 390,
+      "location": "Living room, tree wobbling again",
+      "camera": "Freeze on the family, then a final wide and a card",
+      "beats": [
+        "The tree starts to tip again",
+        "Everyone freezes",
+        "Ben looks at the camera",
+        "The tree falls, end card"
+      ],
       "lines": [
-        { "id": "S10-01", "speaker": "ben", "start": 376.0, "vo": true, "text": "Every year somebody says it's the last Christmas like this." },
-        { "id": "S10-02", "speaker": "diane", "start": 380.0, "text": "Frank..." },
-        { "id": "S10-03", "speaker": "frank", "start": 381.0, "text": "I've got it." },
-        { "id": "S10-04", "speaker": "ben", "start": 383.5, "text": "Well... there's always next Christmas." },
-        { "id": "S10-05", "speaker": "frank", "start": 386.0, "text": "Oh no." }
+        {
+          "id": "S10-01",
+          "speaker": "ben",
+          "start": 376.0,
+          "vo": true,
+          "text": "Every year somebody says it's the last Christmas like this, and every year they're wrong."
+        },
+        {
+          "id": "S10-02",
+          "speaker": "diane",
+          "start": 380.5,
+          "text": "Frank..."
+        },
+        {
+          "id": "S10-03",
+          "speaker": "frank",
+          "start": 382.3,
+          "text": "I've got it."
+        },
+        {
+          "id": "S10-04",
+          "speaker": "ben",
+          "start": 384.0,
+          "text": "Well... there's always next Christmas."
+        },
+        {
+          "id": "S10-05",
+          "speaker": "frank",
+          "start": 386.5,
+          "text": "Oh no."
+        },
+        {
+          "id": "S10-06",
+          "speaker": "max",
+          "start": 388.0,
+          "text": "Merry Christmas!"
+        }
       ]
     }
   ]

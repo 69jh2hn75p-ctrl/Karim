@@ -16,7 +16,8 @@
     "validate:mp4": "tsx scripts/validate-mp4.ts",
     "studio:still": "tsx scripts/studio-still.ts",
     "build:studio-audio": "tsx scripts/build-studio-audio.ts",
-    "render:studio": "tsx scripts/render-studio.ts"
+    "render:studio": "tsx scripts/render-studio.ts",
+    "build:studio-music": "tsx scripts/build-studio-music.ts"
   },
   "dependencies": {
     "@remotion/bundler": "4.0.545",

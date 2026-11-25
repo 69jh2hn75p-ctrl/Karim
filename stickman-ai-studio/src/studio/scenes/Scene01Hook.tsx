@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, useCurrentFrame } from 'remotion';
 import { LivingRoom, FLOOR_Y } from '../backgrounds/LivingRoom';
 import { ChristmasTree } from '../props/ChristmasTree';
 import { Stickman } from '../characters/Stickman';
@@ -70,7 +70,7 @@ const CAMERA: CameraKey[] = [
 
 export const Scene01Hook: React.FC = () => {
   const frame = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const durationInFrames = 30 * FPS;
   const t = frame / FPS;
 
   // Camera and tree

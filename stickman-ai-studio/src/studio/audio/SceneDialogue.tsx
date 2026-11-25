@@ -24,7 +24,7 @@ export const SceneDialogue: React.FC<{ sceneId: string; fps?: number }> = ({ sce
       {scene.lines.map((line) => {
         const timed = TIMING_LINES.find((t) => t.id === line.id);
         if (!timed) return null;
-        const localFrom = Math.round((line.start - scene.from) * fps);
+        const localFrom = timed.startFrame - Math.round(scene.from * fps);
         return (
           <Sequence key={line.id} from={localFrom} durationInFrames={timed.durationFrames + 6}>
             <Audio src={staticFile(`christmas/audio/${timed.audioFile}`)} />
