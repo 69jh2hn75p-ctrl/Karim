@@ -1,4 +1,5 @@
 import raw from './christmas-at-our-house.json';
+import timingJson from '../generated/christmas-timing.json';
 
 /** The screenplay as typed data. Scenes, lines and timings come from the JSON file. */
 export interface ScreenplayLine {
@@ -48,7 +49,8 @@ export function captionFor(sp: Screenplay, sceneId: string, localT: number): { t
   if (!scene) return null;
   const abs = scene.from + localT;
   for (const line of scene.lines) {
-    const end = line.start + estimatedLineSeconds(line.text);
+    const timed = ((timingJson as { lines?: { id: string; durationFrames: number }[] }).lines ?? []).find((t) => t.id === line.id);
+    const end = line.start + (timed ? timed.durationFrames / 24 + 0.25 : estimatedLineSeconds(line.text));
     if (abs >= line.start && abs < end) {
       const name = sp.scenes.length && line.speaker ? line.speaker.charAt(0).toUpperCase() + line.speaker.slice(1) : '';
       return { text: line.text, speaker: line.offscreen ? `${name} (off-screen)` : name, vo: !!line.vo };

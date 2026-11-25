@@ -21,7 +21,7 @@ export const FAMILY: Record<CharacterSpec['id'], CharacterSpec> = {
     outfit: 'hoodie',
     hair: 'curly',
     glasses: false,
-    voice: { engine: 'espeak-ng', voice: 'en-us+m3', speed: 175, pitch: 52 },
+    voice: { engine: 'elevenlabs', voice: 'en-us+m3', speed: 175, pitch: 52, elevenlabsVoiceId: 'bIHbv24MWmeRgasZH58o' },
   },
   frank: {
     id: 'frank',
@@ -39,7 +39,7 @@ export const FAMILY: Record<CharacterSpec['id'], CharacterSpec> = {
     outfit: 'sweater',
     hair: 'bald',
     glasses: true,
-    voice: { engine: 'espeak-ng', voice: 'en-us+m1', speed: 150, pitch: 28 },
+    voice: { engine: 'elevenlabs', voice: 'en-us+m1', speed: 150, pitch: 28, elevenlabsVoiceId: 'JBFqnCBsd6RMkjVDRZzb' },
   },
   diane: {
     id: 'diane',
@@ -57,7 +57,7 @@ export const FAMILY: Record<CharacterSpec['id'], CharacterSpec> = {
     outfit: 'apron',
     hair: 'bun',
     glasses: false,
-    voice: { engine: 'espeak-ng', voice: 'en-us+f2', speed: 160, pitch: 60 },
+    voice: { engine: 'elevenlabs', voice: 'en-us+f2', speed: 160, pitch: 60, elevenlabsVoiceId: 'EXAVITQu4vr4xnSDxMaL' },
   },
   max: {
     id: 'max',
@@ -75,6 +75,6 @@ export const FAMILY: Record<CharacterSpec['id'], CharacterSpec> = {
     outfit: 'parka',
     hair: 'beanie',
     glasses: false,
-    voice: { engine: 'espeak-ng', voice: 'en-us+f3', speed: 185, pitch: 80 },
+    voice: { engine: 'elevenlabs', voice: 'en-us+f3', speed: 185, pitch: 80, elevenlabsVoiceId: 'FGY2WhTYpPnrIDTdsKH5' },
   },
 };

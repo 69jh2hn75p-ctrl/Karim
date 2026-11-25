@@ -10,6 +10,7 @@ import { idle, walk, brace, cheer, fall, STARTLE, mixPose } from '../animations/
 import { cameraAt, cameraTransform, type CameraKey } from '../camera/camera';
 import { track, smoothstep, clamp } from '../utilities/math';
 import { Caption } from '../components/Caption';
+import { SceneDialogue } from '../audio/SceneDialogue';
 import { SCREENPLAY, captionFor } from '../screenplay';
 import { envelopeAt } from '../audio/lipsync';
 import type { EmotionName, FaceParams, Pose } from '../characters/types';
@@ -138,6 +139,8 @@ export const Scene01Hook: React.FC = () => {
       </svg>
 
       <Caption text={cap?.text ?? ''} speaker={cap?.speaker ?? ''} vo={cap?.vo ?? false} visible={!!cap} />
+
+      <SceneDialogue sceneId="S01" />
 
       <AbsoluteFill style={{ background: '#000', opacity: fadeOpacity, pointerEvents: 'none' }} />
     </AbsoluteFill>

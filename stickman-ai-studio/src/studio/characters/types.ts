@@ -58,10 +58,12 @@ export interface Pose {
 
 export interface VoiceProfile {
   engine: 'espeak-ng' | 'elevenlabs';
-  /** espeak voice id, e.g. en-us+m3. */
+  /** espeak voice id, e.g. en-us+m3. Used when engine is espeak-ng. */
   voice: string;
   speed: number;
   pitch: number;
+  /** ElevenLabs voice id from the account's voice list. Used when engine is elevenlabs. */
+  elevenlabsVoiceId?: string;
 }
 
 export interface CharacterSpec {

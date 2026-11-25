@@ -8,14 +8,13 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, unlinkSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { VoiceProfile } from '../../src/characters/roster';
-import type { CharacterId } from '../../src/engine/timeline';
 import { decodeWav } from './wav';
 
 export interface TtsRequest {
   text: string;
-  speaker: CharacterId;
-  voice: VoiceProfile;
+  /** Character id: ren/bo for Episode 001-002, ben/frank/diane/max for the studio. */
+  speaker: string;
+  voice: { voice: string; speed: number; pitch: number; elevenlabsVoiceId?: string };
 }
 
 export interface TtsResult {
@@ -94,8 +93,8 @@ export class ElevenLabsProvider implements TtsProvider {
 
   async synthesize(req: TtsRequest): Promise<TtsResult> {
     const varName = `ELEVENLABS_VOICE_${req.speaker.toUpperCase()}`;
-    const voiceId = this.env[varName];
-    if (!voiceId) throw new Error(`${varName} is not set. Put the ElevenLabs voice ID for ${req.speaker} there.`);
+    const voiceId = this.env[varName] ?? req.voice.elevenlabsVoiceId;
+    if (!voiceId) throw new Error(`No ElevenLabs voice for ${req.speaker}: set ${varName} or elevenlabsVoiceId in the character spec.`);
 
     const f = this.opts.fetchImpl ?? fetch;
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(voiceId)}?output_format=pcm_24000`;

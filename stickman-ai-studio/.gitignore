@@ -5,3 +5,4 @@ dist/
 *.log
 .remotion/
 out/
+public/christmas/audio/
