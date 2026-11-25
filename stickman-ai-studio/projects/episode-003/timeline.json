@@ -1,0 +1,46 @@
+{
+  "title": "Moon Signal",
+  "fps": 24,
+  "frames": 480,
+  "width": 1280,
+  "height": 720,
+  "characters": {
+    "mira": "Young astronaut. Round head, big eyes, white suit with orange stripes, glass visor.",
+    "pip": "Small round robot, teal body, one glowing lens, a single antenna."
+  },
+  "story": [
+    { "from": 0, "to": 48, "beat": "Earth rises over the grey horizon. The lander comes down slowly." },
+    { "from": 48, "to": 150, "beat": "Touchdown. The hatch opens. Mira hops out in low gravity and looks up at Earth. Pip floats out after her." },
+    { "from": 150, "to": 262, "beat": "They walk to a ridge. Mira slips on the step, and Pip catches her hand and pulls her up." },
+    { "from": 262, "to": 350, "beat": "A glowing crystal rises out of a crater. Mira reaches out and touches it, and a ring of light spreads outward." },
+    { "from": 350, "to": 430, "beat": "The crystal shows a star map. The camera orbits the two of them as the constellation lines connect." },
+    { "from": 430, "to": 480, "beat": "They cheer and look up at Earth. The title MOON SIGNAL appears and the picture fades out." }
+  ],
+  "walk": [
+    { "from": 150, "to": 200 },
+    { "from": 232, "to": 262 }
+  ],
+  "events": {
+    "touchdown": 48,
+    "hatchOpen": 62,
+    "hop": 80,
+    "hopLand": 100,
+    "pipEmerge": 116,
+    "pipSpin": 130,
+    "slip": 205,
+    "catch": 216,
+    "pullUp": 236,
+    "crystalRise": 265,
+    "crystalRiseEnd": 300,
+    "touch": 338,
+    "ring": 343,
+    "starNodesFrom": 350,
+    "starNodesStep": 3,
+    "starNodeCount": 10,
+    "cheer": 430,
+    "titleFrom": 452,
+    "titleTo": 470,
+    "fadeFrom": 468,
+    "end": 480
+  }
+}
