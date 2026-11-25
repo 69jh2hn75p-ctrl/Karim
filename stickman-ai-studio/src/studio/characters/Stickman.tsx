@@ -36,9 +36,11 @@ export interface StickmanProps {
   opacity?: number;
   /** Vertical offset from the ground in px. Positive is down (falling). */
   drop?: number;
+  /** Squash (x < 1 and y > 1) or stretch (x > 1 and y < 1) of the whole figure. */
+  stretch?: [number, number];
 }
 
-export const Stickman: React.FC<StickmanProps> = ({ x, groundY, spec, pose, face, blink, facing = 1, zoom = 1, opacity = 1, drop = 0 }) => {
+export const Stickman: React.FC<StickmanProps> = ({ x, groundY, spec, pose, face, blink, facing = 1, zoom = 1, opacity = 1, drop = 0, stretch = [1, 1] }) => {
   const k = spec.scale * zoom;
   const { palette } = spec;
   const hip: Pt = { x: 0, y: HIP_Y + pose.hipY };
@@ -167,7 +169,7 @@ export const Stickman: React.FC<StickmanProps> = ({ x, groundY, spec, pose, face
   })();
 
   return (
-    <g transform={`translate(${x.toFixed(2)} ${(groundY + drop).toFixed(2)}) scale(${(k * facing).toFixed(4)} ${k.toFixed(4)})`} opacity={opacity}>
+    <g transform={`translate(${x.toFixed(2)} ${(groundY + drop).toFixed(2)}) scale(${(k * facing * stretch[0]).toFixed(4)} ${(k * stretch[1]).toFixed(4)})`} opacity={opacity}>
       {/* Far side first, dimmed so the near side reads in front. */}
       {limb([hip, legR.knee, legR.ankle], '#00000055', STROKE - 2)}
       {shoe(legR.ankle, true)}

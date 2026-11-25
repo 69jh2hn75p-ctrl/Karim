@@ -27,6 +27,14 @@ const treeTip = (t: number): number =>
 /** Frank holds the tree from 0.4 s until it crashes. */
 const bracing = (t: number): number => smoothstep((t - 0.4) / 0.9) * (1 - smoothstep((t - 21.4) / 0.6));
 
+/** Frank's lunge: a squash on the grab, then a stretch as he braces. Settles to normal. */
+const squash = (t: number): [number, number] => {
+  if (t < 0.2) return [1, 1];
+  if (t < 0.6) return [1.14, 0.86];
+  if (t < 1.0) return [0.95, 1.07];
+  return [1, 1];
+};
+
 /** Frank's expression across the scene. */
 const frankEmotion = (t: number): EmotionName => {
   if (t < 0.9) return 'excited';
@@ -57,15 +65,15 @@ const dianeEmotion = (t: number): EmotionName => (t < 14.5 ? 'neutral' : t < 22 
 
 /** Camera keys for scene 1, in scene-local seconds. */
 const CAMERA: CameraKey[] = [
-  { t: 0, x: 980, y: 540, zoom: 0.95 },
-  { t: 3, x: 1020, y: 520, zoom: 1.05 },
-  { t: 6, x: 600, y: 520, zoom: 1.3 },
-  { t: 12, x: 700, y: 520, zoom: 1.15 },
-  { t: 14, x: 1000, y: 500, zoom: 0.95 },
-  { t: 18, x: 1180, y: 520, zoom: 1.2 },
-  { t: 22, x: 1200, y: 520, zoom: 1.1 },
-  { t: 26, x: 560, y: 520, zoom: 1.35 },
-  { t: 30, x: 520, y: 500, zoom: 1.4 },
+  { t: 0, x: 1000, y: 520, zoom: 1.2 },
+  { t: 3, x: 1000, y: 520, zoom: 1.25 },
+  { t: 6, x: 640, y: 520, zoom: 1.4 },
+  { t: 12, x: 820, y: 520, zoom: 1.3 },
+  { t: 14, x: 1000, y: 500, zoom: 1.2 },
+  { t: 18, x: 1080, y: 520, zoom: 1.25 },
+  { t: 22, x: 1090, y: 520, zoom: 1.25 },
+  { t: 26, x: 600, y: 520, zoom: 1.4 },
+  { t: 30, x: 600, y: 500, zoom: 1.4 },
 ];
 
 export const Scene01Hook: React.FC = () => {
@@ -81,6 +89,7 @@ export const Scene01Hook: React.FC = () => {
   // Frank: bracing, then crushed under the crash
   const b = bracing(t);
   const frankX = 1250 + 90 * smoothstep((t - 21.6) / 1.2);
+  const frankStretch = squash(t);
   const frankPose: Pose = mixPose(mixPose(idle(t, 1), brace(t), b), fall(t), smoothstep((t - 21.5) / 0.5));
 
   // Ben: stands to camera, shrugs, laughs at the crash, waves at the end
@@ -131,10 +140,10 @@ export const Scene01Hook: React.FC = () => {
           <ChristmasTree x={TREE.x} baseY={FLOOR_Y} height={TREE.height} tip={tip} starOff={starOff} frame={frame} />
 
           {/* Max and Ben stand left, Diane in the doorway, Frank holds the tree */}
-          <Stickman x={maxX} groundY={FLOOR_Y} spec={FAMILY.max} pose={maxPose} face={maxFace} blink={blinkAt(t, 0.6)} facing={1} />
-          <Stickman x={520} groundY={FLOOR_Y} spec={FAMILY.ben} pose={benPose} face={benFace} blink={blinkAt(t, 0)} facing={1} />
-          <Stickman x={dianeX} groundY={FLOOR_Y} spec={FAMILY.diane} pose={dianePose} face={dianeFace} blink={blinkAt(t, 2.3)} facing={-1} opacity={t < 13 ? 0 : 1} />
-          <Stickman x={frankX} groundY={FLOOR_Y} spec={FAMILY.frank} pose={frankPose} face={frankFace} blink={blinkAt(t, 1.1)} facing={-1} />
+          <Stickman x={maxX} zoom={1.3} groundY={FLOOR_Y} spec={FAMILY.max} pose={maxPose} face={maxFace} blink={blinkAt(t, 0.6)} facing={1} />
+          <Stickman x={520} zoom={1.3} groundY={FLOOR_Y} spec={FAMILY.ben} pose={benPose} face={benFace} blink={blinkAt(t, 0)} facing={1} />
+          <Stickman x={dianeX} zoom={1.3} groundY={FLOOR_Y} spec={FAMILY.diane} pose={dianePose} face={dianeFace} blink={blinkAt(t, 2.3)} facing={-1} opacity={t < 13 ? 0 : 1} />
+          <Stickman x={frankX} zoom={1.3} groundY={FLOOR_Y} spec={FAMILY.frank} pose={frankPose} face={frankFace} blink={blinkAt(t, 1.1)} facing={-1} stretch={frankStretch} />
         </g>
       </svg>
 

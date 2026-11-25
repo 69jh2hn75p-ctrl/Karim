@@ -42,60 +42,53 @@
         {
           "id": "S01-01",
           "speaker": "frank",
-          "start": 0.9,
+          "start": 0.4,
           "text": "Got it! I've got it!"
         },
         {
           "id": "S01-02",
           "speaker": "max",
-          "start": 2.4,
-          "text": "It's falling! It's falling!"
+          "start": 1.6,
+          "text": "TIMBER!"
         },
         {
           "id": "S01-03",
           "speaker": "ben",
-          "start": 4.4,
+          "start": 3.6,
           "vo": true,
           "text": "Every family has its own Christmas traditions."
         },
         {
           "id": "S01-04",
           "speaker": "ben",
-          "start": 7.2,
+          "start": 7.0,
           "vo": true,
           "text": "Some families have peaceful Christmas mornings."
         },
         {
           "id": "S01-05",
           "speaker": "ben",
-          "start": 11.0,
+          "start": 10.6,
           "vo": true,
-          "text": "My family? Well... we have this."
+          "text": "My family? We have this."
         },
         {
           "id": "S01-06",
           "speaker": "diane",
-          "start": 15.0,
+          "start": 14.5,
           "offscreen": true,
-          "text": "Frank, that tree is not going to hold itself!"
+          "text": "Frank, that tree is NOT going to hold itself!"
         },
         {
           "id": "S01-07",
           "speaker": "frank",
-          "start": 18.8,
+          "start": 18.0,
           "text": "It's holding, Diane. It's totally holding."
-        },
-        {
-          "id": "S01-09",
-          "speaker": "ben",
-          "start": 21.6,
-          "text": "Dad wasn't holding it. Dad was hugging it.",
-          "vo": true
         },
         {
           "id": "S01-08",
           "speaker": "ben",
-          "start": 25.0,
+          "start": 24.0,
           "text": "Merry Christmas. Please don't sue us."
         }
       ]
